@@ -1,0 +1,40 @@
+<%- include("partials/header.ejs") %>
+
+  <section id="header">
+    <h1 class="heading">WELcome to this blogggg</h1>
+  </section>
+  
+  <section id="form">
+  <div class="col-8 container">
+  <form action="/create-post" method="POST">
+    
+    <input class="form-control" type="text" id="title" placeholder="Title" name="title" required>
+    <br>
+    
+    <textarea class="form-control" id="content" name="content" placeholder="Enter your content here" required></textarea>
+    <br>
+    <button class="btn btn-primary" type="submit">Create Post</button>
+  </form>
+  </div>
+</section>
+
+<section id="all-posts">
+  <div class="container col-8">
+<h2>All posts</h2>
+
+<ul>
+  <% title.forEach((post, index) => { %>
+    <li>
+      <h2><a href="/posts/<%= index %>"><%= post %></a></h2>
+    </li>
+  <% }); %>
+</ul>
+</div>
+</section>
+<footer id="footer">
+  <!-- Step 4 - Add a dynamic year to the footer using JS. -->
+  <% var cYear = new Date().getFullYear(); %>
+  <p>Copyright © <%= cYear %></p>
+</footer>
+
+<%- include("partials/footer.ejs") %>
